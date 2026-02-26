@@ -3,12 +3,10 @@
 {
 "FROM":
 [
-"/DMO/CONNECTION"
+"/DMO/FLIGHT"
 ],
 "ASSOCIATED":
-[
-"ZIKD_FLIGHT_TECH_R"
-],
+[],
 "BASE":
 [],
 "ANNO_REF":
