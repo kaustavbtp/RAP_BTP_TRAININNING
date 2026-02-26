@@ -1,4 +1,5 @@
 @EndUserText.label: 'Flight service'
 define service Zkdflight_tech {
   expose zikd_connection_tech_r;
+  expose ZIKD_Flight_tech_R;
 }

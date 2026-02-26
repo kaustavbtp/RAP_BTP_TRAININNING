@@ -27,10 +27,10 @@ define view entity zikd_connection_tech_r
                     purpose: #STANDARD,
                     type: #LINEITEM_REFERENCE,
                     position: 20,
-                    label: 'Flights'}
+                    label: 'Flights',
+                    targetElement: '_flight'
 
-
-                    ]
+                    }]
 
       @UI.lineItem: [{position: 10, label: 'Connection ID'}]
       @UI.identification: [{position: 10, label: 'Airline'}]
