@@ -4,8 +4,12 @@
 @Metadata.ignorePropagatedAnnotations: true
 define view entity ZIKD_Flight_tech_R
   as select from /dmo/flight
+
+  association [1] to zikd_carrier_tech_r as _airline on $projection.CarrierId = _airline.CarrierId
+
 {
       @UI.lineItem: [{ position: 10 }]
+      @ObjectModel.text.association: '_airline'
   key carrier_id     as CarrierId,
       @UI.lineItem: [{ position: 20 }]
   key connection_id  as ConnectionId,
@@ -21,5 +25,6 @@ define view entity ZIKD_Flight_tech_R
       @UI.lineItem: [{ position: 70 }]
       seats_max      as SeatsMax,
       @UI.lineItem: [{ position: 80 }]
-      seats_occupied as SeatsOccupied
+      seats_occupied as SeatsOccupied,
+      _airline
 }

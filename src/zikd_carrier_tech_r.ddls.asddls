@@ -6,6 +6,7 @@ define view entity zikd_carrier_tech_r
   as select from /dmo/carrier
 {
   key carrier_id    as CarrierId,
+      @Semantics.text: true // Annotation to indicate that this field contains text that can be used for display purposes
       name          as Name,
       currency_code as CurrencyCode
 }

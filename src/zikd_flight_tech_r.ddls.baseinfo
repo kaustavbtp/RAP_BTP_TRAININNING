@@ -6,7 +6,9 @@
 "/DMO/FLIGHT"
 ],
 "ASSOCIATED":
-[],
+[
+"ZIKD_CARRIER_TECH_R"
+],
 "BASE":
 [],
 "ANNO_REF":
