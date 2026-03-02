@@ -2,6 +2,7 @@
 @AccessControl.authorizationCheck: #NOT_REQUIRED
 @EndUserText.label: 'Flight information'
 @Metadata.ignorePropagatedAnnotations: true
+@Search.searchable: true
 define view entity ZIKD_Flight_tech_R
   as select from /dmo/flight
 
@@ -21,6 +22,8 @@ define view entity ZIKD_Flight_tech_R
       @UI.lineItem: [{ position: 50 }]
       currency_code  as CurrencyCode,
       @UI.lineItem: [{ position: 60 }]
+      @Search.defaultSearchElement: true // Annotation to indicate that this field should be included in the default search
+      @Search.fuzzinessThreshold: 0.8 // Annotation to specify the fuzziness threshold for search
       plane_type_id  as PlaneTypeId,
       @UI.lineItem: [{ position: 70 }]
       seats_max      as SeatsMax,

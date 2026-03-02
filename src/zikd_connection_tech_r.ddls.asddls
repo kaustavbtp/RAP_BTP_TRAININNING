@@ -10,6 +10,8 @@
 
 @UI.headerInfo: { typeName: 'Connection', typeNamePlural: 'Connections' }
 
+@Search.searchable: true
+
 define view entity zikd_connection_tech_r
   as select from /dmo/connection
 
@@ -35,20 +37,24 @@ define view entity zikd_connection_tech_r
       @UI.identification: [ { position: 10, label: 'Airline' } ]
       @UI.lineItem: [ { position: 10, label: 'Connection ID' } ]
       @ObjectModel.text.association: '_Airline'
+      @Search.defaultSearchElement: true
   key carrier_id      as CarrierId,
 
       @UI.identification: [ { position: 20 } ]
       @UI.lineItem: [ { position: 20 } ]
+      @Search.defaultSearchElement: true
   key connection_id   as ConnectionId,
 
       @UI.identification: [ { position: 30 } ]
       @UI.lineItem: [ { position: 30 } ]
       @UI.selectionField: [ { position: 10 } ]
+      @Search.defaultSearchElement: true
       airport_from_id as AirportFromId,
 
       @UI.identification: [ { position: 40 } ]
       @UI.lineItem: [ { position: 40 } ]
       @UI.selectionField: [ { position: 20 } ]
+      @Search.defaultSearchElement: true
       airport_to_id   as AirportToId,
 
       @UI.identification: [ { position: 50 } ]
@@ -62,6 +68,8 @@ define view entity zikd_connection_tech_r
       //    distance as Distance,
       //    distance_unit as DistanceUnit
       //      -----> Associations
+      @Search.defaultSearchElement: true
       _flight,
+      @Search.defaultSearchElement: true
       _airline
 }
