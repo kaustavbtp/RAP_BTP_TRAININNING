@@ -37,7 +37,7 @@ define view entity zikd_connection_tech_r
       @UI.identification: [ { position: 10, label: 'Airline' } ]
       @UI.lineItem: [ { position: 10, label: 'Connection ID' } ]
       @ObjectModel.text.association: '_Airline'
-      @Search.defaultSearchElement: true
+      //      @Search.defaultSearchElement: true
   key carrier_id      as CarrierId,
 
       @UI.identification: [ { position: 20 } ]
