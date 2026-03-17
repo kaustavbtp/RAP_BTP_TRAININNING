@@ -1,0 +1,4 @@
+@EndUserText.label: 'Service Definition of Bill doc Head'
+define service ZKD_UI_BillHeader {
+  expose ZKD_C_BillHeader;
+}

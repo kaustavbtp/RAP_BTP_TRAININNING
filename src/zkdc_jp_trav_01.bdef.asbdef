@@ -1,0 +1,20 @@
+projection;
+//strict; //Comment this line in to enable strict mode. The strict mode is prerequisite to be future proof regarding syntax and to be able to release your BO.
+define behavior for ZKDC_JP_TRAV_01 //alias <alias_name>
+{
+  use create;
+  use update;
+  use delete;
+
+  use action set_status_booked;
+
+  use association _Booking { create; }
+}
+
+define behavior for ZKDC_JP_BOOK_01 //alias <alias_name>
+{
+  use update;
+  use delete;
+
+  use association _Travel;
+}

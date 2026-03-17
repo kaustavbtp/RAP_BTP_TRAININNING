@@ -1,0 +1,37 @@
+managed implementation in class zbp_kd_i_bill_header unique;
+//strict;
+//extensible;
+//with draft;
+define behavior for ZKD_I_Bill_Header alias BillHeader
+persistent table zkd_bill_header
+lock master unmanaged
+//authorization master ( global )
+//etag master <field_name>
+{
+  field ( readonly : update, mandatory : create ) BillId;
+  create;
+  update;
+  delete;
+
+  //  draft determine action Prepare;
+  //  draft action Edit;
+  //  draft action Activate optimized;
+  //  draft action Discard;
+  //  draft action Resume;
+
+  mapping for zkd_bill_header
+    {
+      BillId             = bill_id;
+      BillType           = bill_type;
+      BillDate           = bill_date;
+      CustomerId         = customer_id;
+      NetAmount          = net_amount;
+      Currency           = currency;
+      SalesOrg           = sales_org;
+      CreatedBy          = createdby;
+      CreateDat          = createdat;
+      LastChangedBy      = lastchangedby;
+      LastChangeDat      = last_changed_at;
+      LocalLastChangeDat = local_last_changed_at;
+    }
+}

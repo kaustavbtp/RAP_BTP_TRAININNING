@@ -1,0 +1,7 @@
+@EndUserText.label: 'Travel Application'
+define service ZKDSD_JP_TRAV_01 {
+  expose ZKDC_JP_TRAV_01 as Travel;
+  expose ZKDC_JP_BOOK_01 as Booking;
+  expose I_Currency      as Currency;
+  expose I_Country       as Country;
+}

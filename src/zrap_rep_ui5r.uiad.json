@@ -1,0 +1,34 @@
+{
+  "formatVersion": "2",
+  "header": {
+    "description": "{{appDescription}}",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "generalInformation": {
+    "appType": "ui5",
+    "catalogId": "SAP_TC_UI5_REPO_UIAD",
+    "targetMappingTitle": "RAP UNMANAGED Project"
+  },
+  "ui5AppDetails": {
+    "appId": "zrap_app"
+  },
+  "navigation": {
+    "targetMappingId": "UI5R_DF21F69E3A5B4190C5BF707FA1BF1E9750A7CB39_TM",
+    "semanticObject": "ZRAP_SEMANTIC",
+    "action": "ZRAP_ACTION",
+    "desktop": true,
+    "tablet": true,
+    "phone": true
+  },
+  "tiles": [
+    {
+      "id": "UI5R_DF21F69E3A5B4190C5BF707FA1BF1E9750A7CB39_AL",
+      "tileType": "static",
+      "isDefault": true,
+      "standard": {
+        "title": "RAP UNMANAGED Project"
+      }
+    }
+  ]
+}
