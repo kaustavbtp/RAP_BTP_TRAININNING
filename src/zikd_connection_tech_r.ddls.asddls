@@ -45,16 +45,19 @@ define view entity zikd_connection_tech_r
       @Search.defaultSearchElement: true
   key connection_id   as ConnectionId,
 
-      @UI.identification: [ { position: 30 } ]
-      @UI.lineItem: [ { position: 30 } ]
+      @UI.identification: [ { position: 30, label: 'Departure Airport Id'  } ]
+      @UI.lineItem: [ { position: 30, label: 'Departure Airport Id'} ]
       @UI.selectionField: [ { position: 10 } ]
       @Search.defaultSearchElement: true
+      @Consumption.valueHelpDefinition: [{ entity: { name: 'zikd_airport_tech_vh', element: 'AirportId' } } ]
       airport_from_id as AirportFromId,
 
       @UI.identification: [ { position: 40 } ]
       @UI.lineItem: [ { position: 40 } ]
       @UI.selectionField: [ { position: 20 } ]
       @Search.defaultSearchElement: true
+      @Consumption.valueHelpDefinition: [{ entity: { name: 'zikd_airport_tech_vh', element: 'AirportId' } } ] 
+      @EndUserText.label: 'Destination Airport Id'
       airport_to_id   as AirportToId,
 
       @UI.identification: [ { position: 50 } ]
