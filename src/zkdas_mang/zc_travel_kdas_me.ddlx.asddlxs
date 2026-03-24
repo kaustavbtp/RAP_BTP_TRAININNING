@@ -58,6 +58,7 @@ annotate view ZC_TRAVEL_KDAS_M with
          identification: [{ position: 20 }]
        }
   @Search.defaultSearchElement: true
+  // we are given value help definition for agency and customer, 
   @Consumption.valueHelpDefinition: [{ entity: {
       name: '/DMO/I_Agency',
       element: 'AgencyID'
@@ -69,6 +70,7 @@ annotate view ZC_TRAVEL_KDAS_M with
           identification: [{ position: 30 }]
      }
   @Search.defaultSearchElement: true
+  // we are given value help definition for agency and customer, 
   @Consumption.valueHelpDefinition: [{ entity: {
       name: '/DMO/I_Customer',
       element: 'CustomerID'
@@ -99,6 +101,7 @@ annotate view ZC_TRAVEL_KDAS_M with
          textArrangement: #TEXT_ONLY
        }
   @Search.defaultSearchElement: true
+  // we are given value help definition for overall status, 
   @Consumption.valueHelpDefinition: [{ entity: {
    name: '/DMO/I_Overall_Status_VH',
    element: 'OverallStatus'

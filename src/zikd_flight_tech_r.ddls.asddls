@@ -13,6 +13,7 @@ define view entity ZIKD_Flight_tech_R
       @ObjectModel.text.association: '_airline'
   key carrier_id     as CarrierId,
       @UI.lineItem: [{ position: 20 }]
+      @Search.defaultSearchElement: true
   key connection_id  as ConnectionId,
       @UI.lineItem: [{ position: 30 }]
   key flight_date    as FlightDate,

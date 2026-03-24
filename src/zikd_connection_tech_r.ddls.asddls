@@ -25,17 +25,18 @@ define view entity zikd_connection_tech_r
                      purpose: #STANDARD,
                      type: #IDENTIFICATION_REFERENCE,
                      position: 10,
-                     label: 'Connection Detail' },
+                     label: 'Connection details' },
+
                    { id: 'Flight',
                      purpose: #STANDARD,
                      type: #LINEITEM_REFERENCE,
                      position: 20,
-                     label: 'Flights',
+                     label: 'flights',
                      targetElement: '_flight' } ]
 
 
       @UI.identification: [ { position: 10, label: 'Airline' } ]
-      @UI.lineItem: [ { position: 10, label: 'Connection ID' } ]
+      @UI.lineItem: [ { position: 10, label: 'connection ID' } ]
       @ObjectModel.text.association: '_Airline'
       //      @Search.defaultSearchElement: true
   key carrier_id      as CarrierId,
@@ -56,7 +57,7 @@ define view entity zikd_connection_tech_r
       @UI.lineItem: [ { position: 40 } ]
       @UI.selectionField: [ { position: 20 } ]
       @Search.defaultSearchElement: true
-      @Consumption.valueHelpDefinition: [{ entity: { name: 'zikd_airport_tech_vh', element: 'AirportId' } } ] 
+      @Consumption.valueHelpDefinition: [{ entity: { name: 'zikd_airport_tech_vh', element: 'AirportId' } } ]
       @EndUserText.label: 'Destination Airport Id'
       airport_to_id   as AirportToId,
 
