@@ -1,0 +1,36 @@
+projection;
+strict ( 2 );
+use draft;
+
+define behavior for ZC_TRAVEL_KDAS_M //alias <alias_name>
+{
+  use create;
+  use update;
+  use delete;
+
+  use action Edit;
+  use action Activate;
+  use action Discard;
+  use action Resume;
+  use action Prepare;
+
+  use association _Booking { create; with draft; }
+}
+
+define behavior for ZC_BOOKING_KDAS_M //alias <alias_name>
+{
+  use update;
+  use delete;
+
+  use association _Travel { with draft; }
+  use association _Bookingsuppl { create; with draft; }
+}
+
+define behavior for ZC_BOOKSUPPL_KDAS_M //alias <alias_name>
+{
+  use update;
+  use delete;
+
+  use association _Travel { with draft; }
+  use association _Booking { with draft; }
+}

@@ -1,0 +1,55 @@
+managed ; // implementation in class zbp_i_travel_kdas_m unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZI_TRAVEL_KDAS_M //alias travel
+ implementation in class zcl_bp_travel_kdas_m unique
+persistent table ztravel_kdas_m
+draft table ztravel_kdas_m_d
+lock master total etag LastChangedAt
+authorization master ( instance )
+//etag master <field_name>
+{
+  create ( authorization : global );
+  update;
+  delete;
+  field ( readonly ) TravelId;
+  association _Booking { create; with draft; }
+
+  draft action Edit;
+  draft action Activate;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+
+
+}
+
+define behavior for ZI_BOOKING_KDAS_M //alias <alias_name>
+persistent table zbooking_kdas_m
+draft table zbooking_kdas_d
+lock dependent by _Travel
+authorization dependent by _Travel
+//etag master <field_name>
+{
+//  create ( authorization : global );
+  update;
+  delete;
+  field ( readonly ) TravelId, BookingId;
+  association _Travel;
+  association _Bookingsuppl { create; with draft; }
+}
+
+define behavior for ZI_BOOKSUPPL_KDAS_M //alias <alias_name>
+persistent table zbooksupp_kdas_m
+draft table zbooksupp_kdas_d
+lock dependent by _Travel
+authorization dependent by _Travel
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly ) TravelId, BookingId, BookingSupplementId;
+  association _Travel { with draft; }
+  association _Booking { with draft; }
+}
