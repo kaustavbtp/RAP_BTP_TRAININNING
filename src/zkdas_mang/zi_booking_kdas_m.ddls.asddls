@@ -1,7 +1,7 @@
 @AbapCatalog.viewEnhancementCategory: [#NONE]
 @AccessControl.authorizationCheck: #NOT_REQUIRED
 @EndUserText.label: 'Booking Interface View Manged'
-@Metadata.ignorePropagatedAnnotations: true
+@Metadata.ignorePropagatedAnnotations: true 
 define view entity ZI_BOOKING_KDAS_M as select from ZBOOKING_KDAS_M
  association        to parent ZI_TRAVEL_KDAS_M  as _Travel         on  $projection.TravelId = _Travel.TravelId
   composition [0..*] of ZI_BOOKSUPPL_KDAS_M      as _Bookingsuppl

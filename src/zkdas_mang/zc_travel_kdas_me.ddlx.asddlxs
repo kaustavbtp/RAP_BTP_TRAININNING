@@ -6,7 +6,7 @@
     title: {
         type: #STANDARD,
         label: 'Travel',
-        value: 'TravelId'
+        value: 'TravelId' 
     }
 }
 annotate view ZC_TRAVEL_KDAS_M with
@@ -59,7 +59,7 @@ annotate view ZC_TRAVEL_KDAS_M with
   TravelId;
   @UI: { lineItem: [{ position: 20 }],
          selectionField: [{ position: 20 }],
-         identification: [{ position: 20 }]
+         identification: [{ position: 20 }]     
        }
   @Search.defaultSearchElement: true
   // we are given value help definition for agency and customer, 

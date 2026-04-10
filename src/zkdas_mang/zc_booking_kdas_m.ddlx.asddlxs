@@ -6,7 +6,7 @@
     title: {
         type: #STANDARD,
         label: 'Booking',
-        value: 'BookingId'
+        value: 'BookingId' 
     }
 }
 annotate view ZC_BOOKING_KDAS_M with

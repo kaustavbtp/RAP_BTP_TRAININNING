@@ -6,7 +6,7 @@
     title: {
         type: #STANDARD,
         label: 'Booking Suppliments',
-        value: 'BookingSupplementId'
+        value: 'BookingSupplementId' 
     }
 }
 annotate view ZC_BOOKSUPPL_KDAS_M with

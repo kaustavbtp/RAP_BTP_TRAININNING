@@ -1,0 +1,5 @@
+CLASS zcl_bp_booksup_kdas_m DEFINITION PUBLIC ABSTRACT FINAL FOR BEHAVIOR OF zi_travel_kdas_m.
+ENDCLASS.
+
+CLASS zcl_bp_booksup_kdas_m IMPLEMENTATION.
+ENDCLASS.

@@ -6,7 +6,7 @@
 define view entity ZC_BOOKING_KDAS_M as projection on ZI_BOOKING_KDAS_M
 {
   key TravelId,
-  key BookingId,
+  key BookingId, 
       BookingDate,
       @ObjectModel.text.element: [ 'CustomerName' ]
       CustomerId,

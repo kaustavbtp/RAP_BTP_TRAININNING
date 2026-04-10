@@ -1,7 +1,7 @@
 @AbapCatalog.viewEnhancementCategory: [#NONE]
 @AccessControl.authorizationCheck: #NOT_REQUIRED
 @EndUserText.label: 'Travel Projection view'
-@Metadata.ignorePropagatedAnnotations: true
+@Metadata.ignorePropagatedAnnotations: true 
 @Metadata.allowExtensions: true
 define root view entity ZC_TRAVEL_KDAS_M provider contract transactional_query
                                    as projection on ZI_TRAVEL_KDAS_M

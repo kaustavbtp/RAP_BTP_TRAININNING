@@ -2,7 +2,7 @@
 @AccessControl.authorizationCheck: #NOT_REQUIRED
 @EndUserText.label: 'Travel Root entity'
 @Metadata.ignorePropagatedAnnotations: true
-define root view entity ZI_TRAVEL_KDAS_M
+define root view entity ZI_TRAVEL_KDAS_M 
   as select from ztravel_kdas_m
   composition [0..*] of ZI_BOOKING_KDAS_M        as _Booking
   association [0..1] to /DMO/I_Agency            as _Agency   on $projection.AgencyId = _Agency.AgencyID
@@ -11,7 +11,7 @@ define root view entity ZI_TRAVEL_KDAS_M
   association [1..1] to /DMO/I_Overall_Status_VH as _Status   on $projection.OverallStatus = _Status.OverallStatus
 
 {
-  key travel_id       as TravelId,
+  key travel_id       as TravelId, 
       agency_id       as AgencyId,
       customer_id     as CustomerId,
       begin_date      as BeginDate,
@@ -31,7 +31,7 @@ define root view entity ZI_TRAVEL_KDAS_M
       last_changed_by as LastChangedBy,
       //the persistent field last_changed_at plays a special role as a field ETag.
       @Semantics.systemDateTime.localInstanceLastChangedAt: true
-      last_changed_at as LastChangedAt,
+      last_changed_at as LastChangedAt,   // as we define the field last_changed_at as ETag, we have to ensure that this field is updated whenever the record is changed. This can be done by defining the field as a timestamp field in the database table and by setting the field value to the current timestamp in the update and insert operations.
       _Booking,
       _Agency,
       _Customer,

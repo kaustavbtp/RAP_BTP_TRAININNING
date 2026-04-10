@@ -1,19 +1,21 @@
-managed ; // implementation in class zbp_i_travel_kdas_m unique;
+managed; // implementation in class zbp_i_travel_kdas_m unique;
 strict ( 2 );
 with draft;
 
 define behavior for ZI_TRAVEL_KDAS_M //alias travel
- implementation in class zcl_bp_travel_kdas_m unique
+implementation in class zcl_bp_travel_kdas_m unique
 persistent table ztravel_kdas_m
 draft table ztravel_kdas_m_d
 lock master total etag LastChangedAt
 authorization master ( instance )
-//etag master <field_name>
+etag master LastChangedAt
+//early numbering
 {
+  field ( readonly ) TravelId;
   create ( authorization : global );
   update;
   delete;
-  field ( readonly ) TravelId;
+  //  field ( readonly ) TravelId;  // we commented this because we are using the guid as travel id and it is generated in the backend and not passed from the frontend so it will be empty during creation and that is why we cannot make it readonly
   association _Booking { create; with draft; }
 
   draft action Edit;
@@ -22,34 +24,90 @@ authorization master ( instance )
   draft action Resume;
   draft determine action Prepare;
 
+  // mapping table for create and  update operation
+
+  mapping for ztravel_kdas_m
+    {
+      TravelId      = travel_id;
+      AgencyId      = agency_id;
+      CustomerId    = customer_id;
+      BeginDate     = begin_date;
+      EndDate       = end_date;
+      BookingFee    = booking_fee;
+      TotalPrice    = total_price;
+      CurrencyCode  = currency_code;
+      Description   = description;
+      OverallStatus = overall_status;
+      CreatedBy     = created_by;
+      CreatedAt     = created_at;
+      LastChangedBy = last_changed_by;
+      LastChangedAt = last_changed_at;
+    }
+
 
 }
 
 define behavior for ZI_BOOKING_KDAS_M //alias <alias_name>
+implementation in class zcl_bp_book_kdas_m unique
 persistent table zbooking_kdas_m
 draft table zbooking_kdas_d
 lock dependent by _Travel
 authorization dependent by _Travel
-//etag master <field_name>
+etag master LastChangedAt
 {
-//  create ( authorization : global );
+  //  create ( authorization : global );
   update;
   delete;
-  field ( readonly ) TravelId, BookingId;
+  //  field ( readonly ) TravelId, BookingId;
+  field ( readonly ) TravelId;
   association _Travel;
   association _Bookingsuppl { create; with draft; }
+
+  // mapping table for create and  update operation
+
+  mapping for zbooking_kdas_m
+    {
+      TravelId      = travel_id;
+      BookingId     = booking_id;
+      BookingDate   = booking_date;
+      CustomerId    = customer_id;
+      CarrierId     = carrier_id;
+      ConnectionId  = connection_id;
+      FlightDate    = flight_date;
+      FlightPrice   = flight_price;
+      CurrencyCode  = currency_code;
+      BookingStatus = booking_status;
+      LastChangedAt = last_changed_at;
+    }
+
+
 }
 
 define behavior for ZI_BOOKSUPPL_KDAS_M //alias <alias_name>
+implementation in class zcl_bp_booksup_kdas_m unique
 persistent table zbooksupp_kdas_m
 draft table zbooksupp_kdas_d
 lock dependent by _Travel
 authorization dependent by _Travel
-//etag master <field_name>
+etag master LastChangedAt
 {
   update;
   delete;
   field ( readonly ) TravelId, BookingId, BookingSupplementId;
   association _Travel { with draft; }
   association _Booking { with draft; }
+
+  // mapping table for create and  update operation
+
+  mapping for zbooksupp_kdas_m
+    {
+      TravelId            = travel_id;
+      BookingId           = booking_id;
+      BookingSupplementId = booking_supplement_id;
+      SupplementId        = supplement_id;
+      Price               = price;
+      CurrencyCode        = currency_code;
+      LastChangedAt       = last_changed_at;
+    }
+
 }
