@@ -6,10 +6,10 @@
     title: {
         type: #STANDARD,
         label: 'Travel',
-        value: 'TravelId' 
+        value: 'TravelId'
     }
-}
-annotate view ZC_TRAVEL_KDAS_M with
+} 
+annotate view ZC_TRAVEL_KDAS_M with 
 //{
 //  @UI.lineItem: [{ position: 10 }]
 //  TravelId;
@@ -49,7 +49,8 @@ annotate view ZC_TRAVEL_KDAS_M with
   //  @UI.lineItem: [{ position: 10 },
   //                 { type:#FOR_ACTION, dataAction: 'copyTravel', label: 'Copy Travel' }]
 
-  @UI.lineItem: [{ position: 10 }]
+  @UI.lineItem: [{ position: 10 },
+                  { type:#FOR_ACTION, dataAction: 'copyTravel', label: 'Copy Travel' } ]
   @UI.identification: [{ position: 10 }]
   @Search.defaultSearchElement: true
   @Consumption.valueHelpDefinition: [{ entity: {
@@ -59,10 +60,10 @@ annotate view ZC_TRAVEL_KDAS_M with
   TravelId;
   @UI: { lineItem: [{ position: 20 }],
          selectionField: [{ position: 20 }],
-         identification: [{ position: 20 }]     
+         identification: [{ position: 20 }]
        }
   @Search.defaultSearchElement: true
-  // we are given value help definition for agency and customer, 
+  // we are given value help definition for agency and customer,
   @Consumption.valueHelpDefinition: [{ entity: {
       name: '/DMO/I_Agency',
       element: 'AgencyID'
@@ -74,7 +75,7 @@ annotate view ZC_TRAVEL_KDAS_M with
           identification: [{ position: 30 }]
      }
   @Search.defaultSearchElement: true
-  // we are given value help definition for agency and customer, 
+  // we are given value help definition for agency and customer,
   @Consumption.valueHelpDefinition: [{ entity: {
       name: '/DMO/I_Customer',
       element: 'CustomerID'
@@ -105,7 +106,7 @@ annotate view ZC_TRAVEL_KDAS_M with
          textArrangement: #TEXT_ONLY
        }
   @Search.defaultSearchElement: true
-  // we are given value help definition for overall status, 
+  // we are given value help definition for overall status,
   @Consumption.valueHelpDefinition: [{ entity: {
    name: '/DMO/I_Overall_Status_VH',
    element: 'OverallStatus'

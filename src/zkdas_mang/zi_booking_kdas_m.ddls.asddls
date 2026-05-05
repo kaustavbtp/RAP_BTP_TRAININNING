@@ -1,9 +1,9 @@
 @AbapCatalog.viewEnhancementCategory: [#NONE]
 @AccessControl.authorizationCheck: #NOT_REQUIRED
 @EndUserText.label: 'Booking Interface View Manged'
-@Metadata.ignorePropagatedAnnotations: true 
-define view entity ZI_BOOKING_KDAS_M as select from ZBOOKING_KDAS_M
- association        to parent ZI_TRAVEL_KDAS_M  as _Travel         on  $projection.TravelId = _Travel.TravelId
+@Metadata.ignorePropagatedAnnotations: true  
+define view entity ZI_BOOKING_KDAS_M as select from zbooking_kdas_m
+ association        to parent ZI_TRAVEL_KDAS_M  as _Travel         on  $projection.TravelId = _Travel.TravelId 
   composition [0..*] of ZI_BOOKSUPPL_KDAS_M      as _Bookingsuppl
   association [1..1] to /DMO/I_Carrier           as _Carrier        on  $projection.CarrierId = _Carrier.AirlineID
   association [1..1] to /DMO/I_Customer          as _Customer       on  $projection.CustomerId = _Customer.CustomerID

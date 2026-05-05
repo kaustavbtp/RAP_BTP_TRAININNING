@@ -3,7 +3,7 @@
 @EndUserText.label: 'Booking Supp Projection View Manged'
 @Metadata.ignorePropagatedAnnotations: true 
 @Metadata.allowExtensions: true
-define view entity ZC_BOOKSUPPL_KDAS_M as projection on ZI_BOOKSUPPL_KDAS_M
+define view entity ZC_BOOKSUPPL_KDAS_M as projection on ZI_BOOKSUPPL_KDAS_M  
 
 {
   key TravelId,

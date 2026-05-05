@@ -11,9 +11,19 @@ authorization master ( instance )
 etag master LastChangedAt
 //early numbering
 {
-  field ( readonly ) TravelId;
+  field ( readonly : update ) TravelId;
+  field ( mandatory : create ) TravelId; // Static Field Control
+  action acceptTravel result [1] $self;
+  action rejectTravel result [1] $self;
+
+  factory action copyTravel [1];
+
+  internal action recalcTotPrice;
+
   create ( authorization : global );
   update;
+  //field ( readonly : update ) CustomerId; // Static Field Control
+  // field ( mandatory : update ) CustomerId; // Static Field Control
   delete;
   //  field ( readonly ) TravelId;  // we commented this because we are using the guid as travel id and it is generated in the backend and not passed from the frontend so it will be empty during creation and that is why we cannot make it readonly
   association _Booking { create; with draft; }
@@ -25,6 +35,7 @@ etag master LastChangedAt
   draft determine action Prepare;
 
   // mapping table for create and  update operation
+  // left one is CDS root entity and right one is the database table(persistence table)
 
   mapping for ztravel_kdas_m
     {
