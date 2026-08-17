@@ -4,8 +4,8 @@ CLASS zcl_data_generator_kdas DEFINITION
   CREATE PUBLIC .
 
   PUBLIC SECTION.
-    INTERFACES
-      if_oo_adt_classrun.
+
+    INTERFACES if_oo_adt_classrun .
   PROTECTED SECTION.
   PRIVATE SECTION.
 ENDCLASS.
@@ -13,6 +13,8 @@ ENDCLASS.
 
 
 CLASS zcl_data_generator_kdas IMPLEMENTATION.
+
+
   METHOD if_oo_adt_classrun~main.
 
     " delete existing entries in the database table
@@ -48,5 +50,8 @@ CLASS zcl_data_generator_kdas IMPLEMENTATION.
     out->write( 'Travel and booking demo data inserted.' ).
 
 
+
   ENDMETHOD.
 ENDCLASS.
+
+

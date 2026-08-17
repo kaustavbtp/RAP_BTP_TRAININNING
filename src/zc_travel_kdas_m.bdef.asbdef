@@ -2,7 +2,7 @@ projection;
 strict ( 2 );
 use draft;
 
-define behavior for ZC_TRAVEL_KDAS_M //alias travel
+define behavior for ZC_TRAVEL_KDAS_M //alias <alias_name>
 use etag
 {
   use create;
@@ -20,7 +20,7 @@ use etag
   use association _Booking { create; with draft; }
 }
 
-define behavior for ZC_BOOKING_KDAS_M //alias booking
+define behavior for ZC_BOOKING_KDAS_M //alias <alias_name>
 use etag
 {
   use update;
@@ -28,9 +28,10 @@ use etag
 
   use association _Travel { with draft; }
   use association _Bookingsuppl { create; with draft; }
+
 }
 
-define behavior for ZC_BOOKSUPPL_KDAS_M //alias bookingsupp
+define behavior for ZC_BOOKSUPPL_KDAS_M //alias <alias_name>
 use etag
 {
   use update;
@@ -38,4 +39,5 @@ use etag
 
   use association _Travel { with draft; }
   use association _Booking { with draft; }
+
 }

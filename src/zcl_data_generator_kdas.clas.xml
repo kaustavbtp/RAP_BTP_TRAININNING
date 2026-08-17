@@ -5,7 +5,7 @@
    <VSEOCLASS>
     <CLSNAME>ZCL_DATA_GENERATOR_KDAS</CLSNAME>
     <LANGU>E</LANGU>
-    <DESCRIPT>Insert data for Travel and booking</DESCRIPT>
+    <DESCRIPT>Class for data insertion</DESCRIPT>
     <STATE>1</STATE>
     <CLSCCINCL>X</CLSCCINCL>
     <FIXPT>X</FIXPT>

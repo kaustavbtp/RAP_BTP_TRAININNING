@@ -22,3 +22,4 @@ define view entity ZC_BOOKSUPPL_KDAS_M as projection on ZI_BOOKSUPPL_KDAS_M
       _Supplement,
       _SupplementText
 }
+

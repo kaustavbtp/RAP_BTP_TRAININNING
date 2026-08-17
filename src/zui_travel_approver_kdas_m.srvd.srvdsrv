@@ -1,0 +1,5 @@
+@EndUserText.label: 'Approver application'
+define service ZUI_travel_Approver_kdas_m {
+  expose ZC_TRAVEL_APPROVER_KDAS_M;
+  expose ZC_BOOKING_APPROVER_KDAS_M;
+}

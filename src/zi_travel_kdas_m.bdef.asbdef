@@ -1,38 +1,54 @@
-managed; // implementation in class zbp_i_travel_kdas_m unique;
+managed; //implementation in class zbp_i_travel_kdas_m unique;
 strict ( 2 );
 with draft;
 
-define behavior for ZI_TRAVEL_KDAS_M //alias travel
+define behavior for ZI_TRAVEL_KDAS_M //alias <alias_name>
 implementation in class zcl_bp_travel_kdas_m unique
 persistent table ztravel_kdas_m
 draft table ztravel_kdas_m_d
 lock master total etag LastChangedAt
 authorization master ( instance )
-etag master LastChangedAt
 //early numbering
+etag master LastChangedAt
+//etag master <field_name>
 {
-  field ( readonly : update ) TravelId;
+
+  //  field ( readonly : update ) TravelId;
   field ( mandatory : create ) TravelId; // Static Field Control
-  action acceptTravel result [1] $self;
-  action rejectTravel result [1] $self;
+  //  field ( mandatory : create ) TravelId, CustomerId; // Static Field Control
+  //  action acceptTravel result [1] $self;
+  //  action rejectTravel result [1] $self;
 
   factory action copyTravel [1];
-
+  action acceptTravel;
+  action rejectTravel;
   internal action recalcTotPrice;
+
+  // Validation
+
+  validation validateCustomer on save { create; field CustomerId; }
+
+  // determination
+
+  determination calculateTotalPrice on modify { create; field BookingFee, CurrencyCode; }
 
   create ( authorization : global );
   update;
   //field ( readonly : update ) CustomerId; // Static Field Control
   // field ( mandatory : update ) CustomerId; // Static Field Control
   delete;
+  // field ( readonly ) TravelId;
   //  field ( readonly ) TravelId;  // we commented this because we are using the guid as travel id and it is generated in the backend and not passed from the frontend so it will be empty during creation and that is why we cannot make it readonly
   association _Booking { create; with draft; }
+
+
 
   draft action Edit;
   draft action Activate;
   draft action Discard;
   draft action Resume;
   draft determine action Prepare;
+
 
   // mapping table for create and  update operation
   // left one is CDS root entity and right one is the database table(persistence table)
@@ -65,13 +81,19 @@ draft table zbooking_kdas_d
 lock dependent by _Travel
 authorization dependent by _Travel
 etag master LastChangedAt
+//etag master <field_name>
 {
   //  create ( authorization : global );
   update;
   delete;
-  //  field ( readonly ) TravelId, BookingId;
-  field ( readonly ) TravelId;
-  association _Travel;
+  field ( readonly ) TravelId, BookingId;
+  //  field ( readonly ) TravelId;
+
+
+  //determination
+  determination calculateTotalPrice on modify { create; field FlightPrice, CurrencyCode; }
+
+  association _Travel { with draft; }
   association _Bookingsuppl { create; with draft; }
 
   // mapping table for create and  update operation
@@ -91,7 +113,6 @@ etag master LastChangedAt
       LastChangedAt = last_changed_at;
     }
 
-
 }
 
 define behavior for ZI_BOOKSUPPL_KDAS_M //alias <alias_name>
@@ -101,10 +122,16 @@ draft table zbooksupp_kdas_d
 lock dependent by _Travel
 authorization dependent by _Travel
 etag master LastChangedAt
+//etag master <field_name>
 {
   update;
   delete;
   field ( readonly ) TravelId, BookingId, BookingSupplementId;
+
+
+  //determination
+  determination calculateTotalPrice on modify { create; field Price, CurrencyCode; }
+
   association _Travel { with draft; }
   association _Booking { with draft; }
 
@@ -120,5 +147,6 @@ etag master LastChangedAt
       CurrencyCode        = currency_code;
       LastChangedAt       = last_changed_at;
     }
+
 
 }
